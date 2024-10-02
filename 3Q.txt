@@ -1,0 +1,35 @@
+To demonstrate the use of character classes in regular expressions, we can create a JavaScript function that searches for specific character classes in a given string and returns the matches. The function will be tested with patterns for digits, uppercase letters, lowercase letters, and special characters.
+
+findCharacterClassMatches Function: This function takes a pattern (string) and a str (string) as arguments. It creates a RegExp object with the specified pattern and the g flag to find all matches in the string.
+str.match(regex): This method returns an array of all matches found in the string. If no matches are found, it returns null, so we use matches || [] to ensure an empty array is returned in that case.
+Test Cases:
+Digits: The pattern \\d matches all digits in the string. The result is ['1', '2', '3', '2', '0', '2', '3'].
+Uppercase Letters: The pattern [A-Z] matches all uppercase letters. The result is ['H', 'W', 'J'].
+Lowercase Letters: The pattern [a-z] matches all lowercase letters. The result is ['e', 'l', 'l', 'o', 'o', 'r', 'l', 'd', 'a', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't'].
+Special Characters: The pattern [^a-zA-Z0-9] matches all characters that are not letters or digits. The result is [' ', ' ', '!', ' ', ',', ' ', '@', ' ', '#'].
+
+program:
+
+function findCharacterClassMatches(pattern, str) {
+    // Create a RegExp object with the provided pattern and the 'g' flag for global search
+    const regex = new RegExp(pattern, 'g');
+    // Find matches in the string
+    const matches = str.match(regex);
+    // Return the matches or an empty array if there are no matches
+    return matches || [];
+}
+
+// Test cases
+const testString = "Hello World! 123, @JavaScript #2023";
+
+// Matches for digits
+console.log("Digits:", findCharacterClassMatches("\\d", testString)); // ['1', '2', '3', '2', '0', '2', '3']
+
+// Matches for uppercase letters
+console.log("Uppercase Letters:", findCharacterClassMatches("[A-Z]", testString)); // ['H', 'W', 'J']
+
+// Matches for lowercase letters
+console.log("Lowercase Letters:", findCharacterClassMatches("[a-z]", testString)); // ['e', 'l', 'l', 'o', 'o', 'r', 'l', 'd', 'a', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't']
+
+// Matches for special characters
+console.log("Special Characters:", findCharacterClassMatches("[^a-zA-Z0-9]", testString)); // [' ', ' ', '!', ' ', ',', ' ', '@', ' ', '#', '']

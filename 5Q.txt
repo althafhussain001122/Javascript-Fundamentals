@@ -1,0 +1,45 @@
+Certainly! Below is a JavaScript program that takes the type of package ("standard", "express", or "overnight") and uses a switch statement to calculate and print the estimated delivery time based on the package type.
+
+
+getDeliveryTime Function: This function takes a packageType as input and initializes a variable deliveryTime to store the estimated delivery time.
+Switch Statement:
+It evaluates the packageType and assigns the corresponding delivery time based on the type of package.
+If the input does not match any of the defined cases, it assigns an error message to deliveryTime.
+Testing: The program includes test cases for each type of package, as well as an invalid type to demonstrate the function's behavior.
+
+program:
+
+function getDeliveryTime(packageType) {
+    let deliveryTime;
+
+    switch (packageType.toLowerCase()) {
+        case "standard":
+            deliveryTime = "3-5 days";
+            break;
+        case "express":
+            deliveryTime = "1-2 days";
+            break;
+        case "overnight":
+            deliveryTime = "Next day delivery";
+            break;
+        default:
+            deliveryTime = "Invalid package type. Please choose 'standard', 'express', or 'overnight'.";
+            break;
+    }
+
+    return deliveryTime;
+}
+
+// Test cases
+console.log("Delivery time for standard package:", getDeliveryTime("standard")); // 3-5 days
+console.log("Delivery time for express package:", getDeliveryTime("express"));   // 1-2 days
+console.log("Delivery time for overnight package:", getDeliveryTime("overnight")); // Next day delivery
+console.log("Delivery time for an invalid package type:", getDeliveryTime("same-day")); // Invalid package type
+
+output:
+Delivery time for standard package: 3-5 days
+Delivery time for express package: 1-2 days
+Delivery time for overnight package: Next day delivery
+Delivery time for an invalid package type: Invalid package type. Please choose 'standard', 'express', or 'overnight'.
+
+

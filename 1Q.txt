@@ -1,0 +1,29 @@
+To demonstrate lexical scoping in JavaScript, we can create a function called outerFunction that takes a parameter and returns an inner function. The inner function will access both the parameter of outerFunction and a variable declared within it, showcasing how it maintains access to these variables even after outerFunction has finished executing.
+1) outerFunction: This function takes a single parameter param and declares a constant outerVariable.
+2) innerFunction: This inner function accesses both param and outerVariable.
+3) Returning innerFunction: The outerFunction returns innerFunction, allowing it to be called later.
+4) Lexical Scoping: When we call myInnerFunction(), it still has access to param and outerVariable, showcasing how          the inner function maintains access to these variables even after outerFunction has completed its execution.
+Example:
+
+function outerFunction(param) {
+    const outerVariable = "I'm from outerFunction"; // Variable within outerFunction
+
+    // Inner function
+    function innerFunction() {
+        console.log("Parameter from outerFunction:", param);
+        console.log("Variable from outerFunction:", outerVariable);
+    }
+
+    return innerFunction; // Return the inner function
+}
+
+// Create an instance of the inner function
+const myInnerFunction = outerFunction("Hello, World!");
+
+// Call the inner function
+myInnerFunction(); // Outputs the values
+
+Output:
+Parameter from outerFunction: Hello, World!
+Variable from outerFunction: I'm from outerFunction
+

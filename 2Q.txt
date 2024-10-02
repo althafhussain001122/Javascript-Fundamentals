@@ -1,0 +1,30 @@
+To demonstrate the basic usage of regular expressions in JavaScript, we can create a function that takes a regex pattern and a string as input. The function will return true if there is a match and false otherwise. Below is the implementation along with tests using various patterns and strings.
+
+1) testRegex Function: This function takes a pattern (string) and a str (string) as arguments. It creates a RegExp object using the provided pattern and tests the string against it.
+2) regex.test(str): The test() method returns true if there is a match and false otherwise.
+
+Test Cases:
+Matches 'hello': testRegex("hello", "hello world") returns true.
+Matches digits: testRegex("\\d+", "There are 123 apples") returns true.
+No lowercase letters: testRegex("[a-z]", "ABC") returns false.
+Matches at the start: testRegex("^start", "start from the beginning") returns true.
+Matches at the end: testRegex("end$", "This is the end") returns true.
+Matches 'foo' or 'bar': testRegex("foo|bar", "I like foo and bar") returns true.
+No match: testRegex("notfound", "This string does not contain it.") returns false.
+
+program:
+function testRegex(pattern, str) {
+    // Create a RegExp object from the provided pattern
+    const regex = new RegExp(pattern);
+    // Test the string against the regex pattern
+    return regex.test(str);
+}
+
+// Test cases
+console.log(testRegex("hello", "hello world")); // true (matches 'hello')
+console.log(testRegex("\\d+", "There are 123 apples")); // true (matches '123')
+console.log(testRegex("[a-z]", "ABC")); // false (no lowercase letters)
+console.log(testRegex("^start", "start from the beginning")); // true (matches at the start)
+console.log(testRegex("end$", "This is the end")); // true (matches at the end)
+console.log(testRegex("foo|bar", "I like foo and bar")); // true (matches 'foo' or 'bar')
+console.log(testRegex("notfound", "This string does not contain it.")); // false (no match)

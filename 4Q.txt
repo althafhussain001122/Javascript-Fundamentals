@@ -1,0 +1,43 @@
+o create a JavaScript program that takes a regex pattern and a string as input, we can write a function that not only checks for matches but also extracts specific parts of the matched text using capturing groups. We'll test this function with patterns designed to capture different parts of a date (e.g., day, month, and year).
+
+
+extractDateComponents Function: This function takes a pattern (string) and a str (string) as arguments. It creates a RegExp object using the provided pattern and executes the regex on the input string.
+regex.exec(str): This method returns an array containing the full match and any captured groups. If there is no match, it returns null.
+Returning Captured Groups: The function returns match.slice(1) to exclude the full match and only include the captured groups (day, month, year).
+Test Cases:
+Date Format dd-mm-yyyy:
+Input: "Today's date is 15-08-2023."
+Output: ['15', '08', '2023']
+Date Format dd/mm/yyyy:
+Input: "The event will be held on 07/09/2024."
+Output: ['07', '09', '2024']
+Date Format dd.mm.yyyy:
+Input: "My birthday is on 25.12.1990."
+Output: ['25', '12', '1990']
+
+program:
+
+function extractDateComponents(pattern, str) {
+    // Create a RegExp object with the provided pattern
+    const regex = new RegExp(pattern);
+    // Execute the regex on the string
+    const match = regex.exec(str);
+    
+    // If there is a match, return the captured groups; otherwise, return null
+    return match ? match.slice(1) : null; // Exclude the full match from results
+}
+
+// Test cases
+const testString1 = "Today's date is 15-08-2023.";
+const testString2 = "The event will be held on 07/09/2024.";
+const testString3 = "My birthday is on 25.12.1990.";
+
+// Patterns to capture day, month, and year
+const pattern1 = "(\\d{2})-(\\d{2})-(\\d{4})"; // For format: dd-mm-yyyy
+const pattern2 = "(\\d{2})/(\\d{2})/(\\d{4})"; // For format: dd/mm/yyyy
+const pattern3 = "(\\d{2})\\.(\\d{2})\\.(\\d{4})"; // For format: dd.mm.yyyy
+
+// Extracting date components
+console.log("Date from string 1:", extractDateComponents(pattern1, testString1)); // ['15', '08', '2023']
+console.log("Date from string 2:", extractDateComponents(pattern2, testString2)); // ['07', '09', '2024']
+console.log("Date from string 3:", extractDateComponents(pattern3, testString3)); // ['25', '12', '1990']
